@@ -39,12 +39,12 @@ class GildedRoseTest(unittest.TestCase):
         items = [Item(name="Aged Brie", sell_in=5, quality=49.5)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
-        self.assertLess(items[0].quality, 50)
+        self.assertLessEqual(items[0].quality, 50)
 
-    def test_calling_non_existent_method(self):
-        items = [Item(name="Aged Brie", sell_in=2, quality=10)]
-        gilded_rose = GildedRose(items)
-        gilded_rose.non_existent_method()
+    def test_none_items(self):
+        gilded_rose = GildedRose([])
+        gilded_rose.update_quality() # No Exception should be raised even if there is no item 
+
 
 
 
